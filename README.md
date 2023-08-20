@@ -1,6 +1,6 @@
 # 로컬 IaC(Infrastructure as Code)테스트 환경 구성하기
 
-***[로컬 IaC(Infrastructure as Code)테스트 환경 구성하기](https://medium.com/@dudwls96/opentelemetry-%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80-18b6e4fe6e36)***
+***[로컬 IaC(Infrastructure as Code)테스트 환경 구성하기](https://medium.com/@dudwls96/%EB%A1%9C%EC%BB%AC-iac-infrastructure-as-code-%ED%85%8C%EC%8A%A4%ED%8A%B8-%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%84%B1%ED%95%98%EA%B8%B0-1261aa0542a9)***
 
 
 # 전체 구성
