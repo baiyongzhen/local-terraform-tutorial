@@ -1,0 +1,21 @@
+---
+namespace: "dev"
+stage: "kr"
+region_code: "apne2"
+
+# VPC
+vpc_id: "vpc-0b7e2d379c1f4906c"
+# Subnet
+public_subnets: ["subnet-0a571a745876feea1", "subnet-0fb8f5bd434c756fe"]
+private_subnets: ["subnet-0a571a745876feea2", "subnet-0fb8f5bd434c756ff"]
+az_ids: ["ap-northeast-2a", "ap-northeast-2c"]
+
+# ALB SSL
+certificate_arn: "arn:aws:acm:ap-northeast-2:123456789012:certificate/49c7237c-3978-4755-a30e-7c155b5b4886"
+
+# EC2 SSH Key
+ssh_key_name: "dev_ssh_key"
+
+# IAM Policy
+ssm_policy_arn: "arn:aws:iam::123456789012:policy/dev-global-ssm-policy"
+

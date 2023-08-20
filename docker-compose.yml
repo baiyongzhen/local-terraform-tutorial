@@ -1,0 +1,55 @@
+version: '3.7'
+
+x-default-logging: &logging
+  driver: "json-file"
+  options:
+    max-size: "5m"
+    max-file: "2"
+
+services:
+  iac:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: iac
+    # env_file: .env
+    depends_on:
+      - consul
+      - localstack
+    volumes:
+      #- /root/.terraform.d/plugin-cache:/root/.terraform.d/plugin-cache:rw
+      - ./:/terraform:rw
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    tty: true
+
+  consul:
+    #image: consul:
+    image: hashicorp/consul:1.11.2
+    container_name: consul
+    restart: always
+    volumes:
+      - /opt/consul/config:/consul/config
+      - /opt/consul/data:/consul/data
+      - /opt/consul/logs:/consul/logs
+    command:  consul agent -server -bootstrap-expect=1 -client=0.0.0.0 -ui -bind='{{ GetPrivateIP }}' -data-dir=/consul/data -node=consul-node -datacenter=dc1 -log-level=debug -enable-script-checks=true -config-dir=/consul/config
+    ports:
+      - "8500:8500" # Web UI
+      - "8600:8600/tcp"
+      - "8600:8600/udp"
+    logging: *logging
+
+  localstack:
+    image: localstack/localstack:2.2
+    container_name: localstack
+    ports:
+      - "0.0.0.0:4566:4566"            # LocalStack Gateway
+      - "0.0.0.0:4510-4559:4510-4559"  # external services port range
+    environment:
+      - DEBUG=0
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - AWS_ACCESS_KEY_ID="test"
+      - AWS_SECRET_ACCESS_KEY="test"
+    volumes:
+      - "/opt/localstack:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    logging: *logging

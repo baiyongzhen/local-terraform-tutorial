@@ -1,0 +1,19 @@
+
+# AWS Configure
+#unset AWS_PROFILE
+#export AWS_PROFILE=dev
+
+# Access keys
+export AWS_ACCESS_KEY_ID=test
+export AWS_SECRET_ACCESS_KEY=test
+
+# TF Plugin Cache
+# export TF_PLUGIN_CACHE_DIR=/root/.terraform.d/plugin-cache
+# export TF_ROOT=$pwd/
+
+# Setting Terraform & Terragrunt
+# tfswitch 0.14.10
+# tgswitch 0.31.2
+
+tfswitch 1.0.11
+tgswitch 0.35.10
