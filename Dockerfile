@@ -14,10 +14,7 @@ RUN rm -f /etc/localtime && ln -sf /usr/share/zoneinfo/Asia/Seoul /etc/localtime
     yum clean all && \
     rm -rf /var/cache/yum && \
     JQ=/usr/bin/jq && \
-    #wget -O direnv https://github.com/direnv/direnv/releases/download/v2.27.0/direnv.linux-amd64 && \
     curl -L curl -sfL https://direnv.net/install.sh | bash && \
-    #chmod +x direnv && \
-    #mv direnv /usr/local/bin/ && \
     echo 'eval "$(direnv hook bash)"' >> /root/.bashrc && \
     curl -L https://raw.githubusercontent.com/warrensbox/terraform-switcher/release/install.sh | bash && tfswitch 0.14.7 && \
     curl -L https://raw.githubusercontent.com/warrensbox/tgswitch/release/install.sh | bash && tgswitch 0.28.7 && \
